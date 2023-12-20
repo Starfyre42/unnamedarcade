@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const os = require('os');
+const serveIndex = require('serve-index');
 
 const app = express();
 const PORT = 8080;
@@ -13,6 +14,10 @@ app.use('/lib', express.static(path.join(__dirname, 'lib')));
 
 // Serve the /src directory under the /src route
 app.use('/src', express.static(path.join(__dirname, 'src')));
+
+app.use('/assets', serveIndex(path.join(__dirname, 'assets'), { 'icons': true }));
+app.use('/lib', serveIndex(path.join(__dirname, 'lib'), { 'icons': true }));
+app.use('/src', serveIndex(path.join(__dirname, 'src'), { 'icons': true }));
 
 // Serve the index.html file as the default route
 app.get('/', (req, res) => {

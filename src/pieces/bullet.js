@@ -9,7 +9,7 @@ export class Bullet extends AbstractPiece {
     }
     
     preload(){
-        this.engine.load.image(`bullet`, `/assets/images/vlaserB.png`);
+        this.engine.load.image(`bullet`, `/assets/images/vlaser.png`);
     }
     
     spawnBullet(image, distance) {
